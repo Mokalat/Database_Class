@@ -103,4 +103,3 @@ select
 	
 	select * from hansik;
 
--- test 입니다
