@@ -102,3 +102,5 @@ select
 	join tbl_category on tbl_menu.category_code =tbl_category.category_code 
 	
 	select * from hansik;
+
+-- test 입니다
