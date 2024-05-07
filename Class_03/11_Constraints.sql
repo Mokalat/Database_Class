@@ -197,12 +197,42 @@ create table if not exists user_check(
 
 insert into user_check 
 values 
-(null, '홍길동', '남', 15),
-(null, '김길동', '짭', 20),
-(null, '신짱구', '남', 5);
+(null, '홍길동', '남', 15)
+-- 아래의 값은 gender에 '남' 또는 '여'만 입력할 수 있도록 설정하였으나 '짭'이라는 값을 입력하여 오류가 발생
+-- (null, '김길동', '짭', 20);
+
+-- 아래의 값은 age에 15이상 값만 입력할 수 있도록 설정하였으나 5가 입력되어 제약조건을 위배함 
+-- (null, '신짱구', '남', 5);
+
+select * from user_check 
 
 
+-- defalut 
+-- 컬럼에 null대신 기본 값 적용
+-- 컬럼 타입이 date일 시 current_date만 가능하다.
+-- 컬럼 타입이 dateime일 시 current_time과 current_timestamp, now() 모두 사용 가능
 
+drop table if exists tb1_country;
+create table if not exists tb1_country(
+	country_code int auto_increment primary key,
+	country_name varchar(255) default '한국',
+	poplation varchar(255) default '0명',
+	add_day date default(current_date),
+	add_time datetime default (current_time)
+)engine = innodb;
+
+select * from tb1_country;
+
+
+insert into tb1_country 
+values (null,default, default, default, default);
+
+insert into tb1_country
+	(country_code)
+	values(null);
+
+
+select * from tb1_country;
 
 
 
